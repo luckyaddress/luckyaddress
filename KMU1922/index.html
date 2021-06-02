@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高醫大‧生活 1922</title>
+</head>
+<style>
+.btn-primary {
+    color: #fff;
+    background-color: #6FB7B7;
+    border-color: #6FB7B7;
+    border-radius: 3px 3px 3px 3px;
+    font-size:18px; 
+    font-family: Microsoft JhengHei;
+    padding: 5px 10px;
+    text-align: center;
+}
+.btn-primary-2 {
+    color: #fff;
+    background-color: #8E8E8E;
+    border-color: #8E8E8E;
+    border-radius: 3px 3px 3px 3px;
+    font-size:18px; 
+    font-family: Microsoft JhengHei;
+    padding: 5px 10px;
+    text-align: center;
+}
+.name-style{
+    text-align: center; 
+    font-size:25px; 
+    font-family: Microsoft JhengHei;
+    color: #005AB5;
+    width: 165px;
+    background-color:#F0FFF0;
+}
+.name-style-2{
+    text-align: center; 
+    font-size:25px; 
+    font-family: Microsoft JhengHei;
+    color: #4F4F4F;
+    width: 165px;
+    background-color:#F0FFF0;
+}
+
+.td_icon{
+    background-color:#F0FFF0;
+    width: 35px;
+    height: 60px;
+
+}
+.img_icon {
+    width: 35px;
+    height: 35px;
+}
+
+.btn {
+    width: 130px;
+    background-color:#F0FFF0;
+}
+</style>
+<body>
+
+<script type="text/javascript">
+
+    var position_code = ['2777 1949 6046 328', '2258 3936 3604 512', '2209 8836 9748 475',
+                          '2433 1371 3020 000', '2764 0361 3574 510']; 
+    var content_mid = '%0a本次簡訊實聯限防疫目的使用。%0a';  //SMS簡訊斷行，使用%0a
+
+    var position_name = ['高雄醫學大學','018552-全家高雄醫大店',
+                         '路易莎咖啡-高醫門市','高雄醫學大學郵局','麗文書坊-高醫店'];
+
+    var content = []; //儲存組合後的5組簡訊的陣列
+
+    for (var i = 0; i < 5; i++) {
+
+        var insert = '場所代碼：'+ position_code[i] + content_mid + '場所名稱：'+ position_name[i];
+        content.push(insert)    //將簡訊內容迴圈加入
+    }
+
+    var link_01 =  content[0];
+    var link_02 =  content[1];
+    var link_03 =  content[2];
+    var link_04 =  content[3];
+    var link_05 =  content[4];
+
+    var phone_type = navigator.userAgent.toLowerCase(); //這兩行組合來判斷
+    var isAndroid = phone_type.indexOf("android") > -1; //是否為Android裝置
+    var link_sms = "";
+
+    window.onload = function() { 
+        
+     
+      if (isAndroid) {
+         link_sms = "sms:1922?body=";  //Android裝置帶到簡訊前面的字串
+        } else {
+        // iOS
+        link_sms = "sms://1922&body="; //iOS裝置帶到簡訊前面的字串
+    }
+    
+    };
+    
+</script>
+
+<div style="width:360px; margin:0 auto;">
+<table >
+
+<tr><td td colspan="3"><img src="../images/1922KMU_top_330x99.png"></td></tr>
+<tr><td class="td_icon"><img src="../images/KMU_80x80.png" class="img_icon"></td><td class="name-style"><b>高雄醫學大學</b></td>
+<td  class=btn><button type="submit" class="btn-primary" onclick="window.location.href = link_sms + link_01">1922 發簡訊</button></td></tr>
+<tr><td class="td_icon"><img src="../images/FAMI_80x80.png" class="img_icon"></td><td class="name-style-2"><b>國研B1全家</b></td>
+<td class=btn><button  type="submit" class="btn-primary-2" onclick="window.location.href = link_sms + link_02">1922 發簡訊</button></td></tr>
+<tr><td class="td_icon"><img src="../images/LOUISA_80x80.png" class="img_icon"></td><td class="name-style"><b>路易莎咖啡</b></td>
+<td class=btn><button  type="submit" class="btn-primary" onclick="window.location.href = link_sms + link_03">1922 發簡訊</button></td></tr>
+<tr><td class="td_icon"><img src="../images/POSTMAN_80x80.png" class="img_icon"></td><td class="name-style-2"><b>高醫大郵局</b></td>
+<td class=btn><button type="submit" class="btn-primary-2" onclick="window.location.href = link_sms + link_04">1922 發簡訊</button></td></tr>
+<tr><td class="td_icon"><img src="../images/LIWEN_80x80.png" class="img_icon"></td><td class="name-style"><b>麗文書坊</b></td>
+<td class=btn><button  type="submit" class="btn-primary" onclick="window.location.href = link_sms + link_05">1922 發簡訊</button></td></tr>
+</table>
+<script type="text/javascript"> //用來識別手機語言
+    
+    var Lang = (navigator.language || navigator.browserLanguage).toLowerCase()
+    
+    if (Lang == "zh-tw") {
+
+        document.getElementsByClassName("btn-primary")[0].innerHTML = "1922 發簡訊";
+        document.getElementsByClassName("btn-primary-2")[0].innerHTML = "1922 發簡訊";;
+        document.getElementsByClassName("btn-primary")[1].innerHTML = "1922 發簡訊";
+        document.getElementsByClassName("btn-primary-2")[1].innerHTML = "1922 發簡訊";;
+        document.getElementsByClassName("btn-primary")[2].innerHTML = "1922 發簡訊";
+
+        document.getElementsByClassName("name-style")[0].innerHTML = "高雄醫學大學";
+        document.getElementsByClassName("name-style-2")[0].innerHTML = "國研B1全家";;
+        document.getElementsByClassName("name-style")[1].innerHTML = "路易莎咖啡";
+        document.getElementsByClassName("name-style-2")[1].innerHTML = "高醫大郵局";;
+        document.getElementsByClassName("name-style")[2].innerHTML = "麗文書坊";
+
+    }   
+    else { //切換成英文顯示
+        document.getElementsByClassName("btn-primary")[0].innerHTML = "1922 SMS";
+        document.getElementsByClassName("btn-primary-2")[0].innerHTML = "1922 SMS";;
+        document.getElementsByClassName("btn-primary")[1].innerHTML = "1922 SMS";
+        document.getElementsByClassName("btn-primary-2")[1].innerHTML = "1922 SMS";;
+        document.getElementsByClassName("btn-primary")[2].innerHTML = "1922 SMS";
+
+        document.getElementsByClassName("name-style")[0].innerHTML = "K.M.U";
+        document.getElementsByClassName("name-style-2")[0].innerHTML = "FamilyMart";;
+        document.getElementsByClassName("name-style")[1].innerHTML = "LOUISA Cafe";
+        document.getElementsByClassName("name-style-2")[1].innerHTML = "POST Office";;
+        document.getElementsByClassName("name-style")[2].innerHTML = "Li-Wen BookStore";
+        //因為麗文書坊的英文字太多，重新賦予CSS
+        var liwen = document.getElementsByClassName("name-style")[2];
+        liwen.style['font-size'] = '17.5px';
+        liwen.style['font-weight'] = 'bold';
+
+    }
+</script>
+</div>
+
+</body>
+</html>
+
