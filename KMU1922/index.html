@@ -115,34 +115,40 @@
         //   3: timed out
         };
 
+     var startPos;
      var geoSuccess = function(position) {
+        
         startPos = position;
         
-        if (22.64620 < parseFloat(position.coords.latitude) < 22.64660 
+        var check1 = (parseFloat(position.coords.latitude) > parseFloat(22.64620) ) &&  (parseFloat(position.coords.latitude) < parseFloat(22.64660))
+        var check2 = (parseFloat(position.coords.longitude) > parseFloat(120.31120) ) && (parseFloat(position.coords.latitude) < parseFloat(120.31138))
+        var check3 = (parseFloat(position.coords.latitude) > parseFloat(22.64675) ) &&  (parseFloat(position.coords.latitude) < parseFloat(22.64730))
+        var check4 = (parseFloat(position.coords.longitude) > parseFloat(120.3075) ) && (parseFloat(position.coords.latitude) < parseFloat(120.30950))
+
+        var check5 = (parseFloat(position.coords.latitude) > parseFloat(22.64740) ) &&  (parseFloat(position.coords.latitude) < parseFloat(22.64900))
+        var check6 = (parseFloat(position.coords.longitude) > parseFloat(120.31010) ) && (parseFloat(position.coords.latitude) < parseFloat(120.31040))
+        var check7 = (parseFloat(position.coords.latitude) > parseFloat(22.64656) ) &&  (parseFloat(position.coords.latitude) < parseFloat(22.64673))
+        var check8 = (parseFloat(position.coords.longitude) > parseFloat(120.31020) ) && (parseFloat(position.coords.latitude) < parseFloat(120.31116))
+
+        if  (check1 && check2)
         
-           && 120.31120 < parseFloat(position.coords.longitude) < 120.31138) 
+            { KMU_pos = '東側門'}
 
-            { KMU_pos ='東側門'}
-
-        else if (22.64675 < parseFloat(position.coords.latitude) < 22.64730
-
-             && 120.3075  < parseFloat(position.coords.longitude) < 120.30950) 
+        else if (check3 && check4) 
 
             { KMU_pos = '自由路大門'}
 
-        else if (22.64740 < parseFloat(position.coords.latitude) < 22.64900  
-
-             && 120.31010 < parseFloat(position.coords.longitude) < 120.31040)  
+        else if (check5 && check6) 
 
             { KMU_pos = '第一教學大樓'}
 
-        else if (22.64656 < parseFloat(position.coords.latitude) < 22.64673
-
-             && 120.31020 < parseFloat(position.coords.longitude) < 120.31116)  
+        else if (check7 && check8) 
 
             { KMU_pos = '國際學術研究大樓'}
 
         else { KMU_pos = ''};  
+
+        //主要問題，卡在Javascript的 數值比較問題，這邊沒有寫得很好，但能運作
 
         //alert(String(position.coords.latitude).substr(0, 8) +  " , " +  String(position.coords.longitude).substr(0, 9))
 
@@ -152,10 +158,11 @@
 
         lat_lon[0].innerHTML = String(position.coords.latitude).substr(0, 8) +  " , " +  String(position.coords.longitude).substr(0, 9)
 
+        
      };
 
-        navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
-     
+     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions); 
+        
       if (isAndroid) {
          link_sms = "sms:1922?body=";  //Android裝置帶到簡訊前面的字串
         } else {
@@ -164,6 +171,8 @@
     }
     
     };
+
+    
 
 </script>
 
