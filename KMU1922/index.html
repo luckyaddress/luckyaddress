@@ -72,6 +72,8 @@
 </script>
 <script type="text/javascript">
 
+    var KMU_pos ='';
+
     var position_code = ['2777 1949 6046 328', '2258 3936 3604 512', '2209 8836 9748 475',
                           '2433 1371 3020 000', '2764 0361 3574 510']; 
     var content_mid = '%0a本次簡訊實聯限防疫目的使用。%0a';  //SMS簡訊斷行，使用%0a
@@ -98,7 +100,63 @@
     var link_sms = "";
 
     window.onload = function() { 
+
+     var startPos;
+     var geoOptions = {
+         timeout: 10 * 1000
+     }    
+
+      var geoError = function(position) {
+         console.log('錯誤產生，錯誤代碼為：' + error.code);
+        // error.code can be:
+        //   0: unknown error
+        //   1: permission denied
+        //   2: position unavailable (error response from location provider)
+        //   3: timed out
+        };
+
+     var geoSuccess = function(position) {
+        startPos = position;
+        
+        if (22.64620 < parseFloat(position.coords.latitude) < 22.64660 
+        
+           && 120.31120 < parseFloat(position.coords.longitude) < 120.31138) 
+
+            { KMU_pos ='東側門'}
+
+        else if (22.64675 < parseFloat(position.coords.latitude) < 22.64730
+
+             && 120.3075  < parseFloat(position.coords.longitude) < 120.30950) 
+
+            { KMU_pos = '自由路大門'}
+
+        else if (22.64740 < parseFloat(position.coords.latitude) < 22.64900  
+
+             && 120.31010 < parseFloat(position.coords.longitude) < 120.31040)  
+
+            { KMU_pos = '第一教學大樓'}
+
+        else if (22.64656 < parseFloat(position.coords.latitude) < 22.64673
+
+             && 120.31020 < parseFloat(position.coords.longitude) < 120.31116)  
+
+            { KMU_pos = '國際學術研究大樓'}
+
+        else { KMU_pos = ''};  
+
+        //alert(position.coords.latitude)
+
+        //alert(KMU_pos)
+
+        var lat_lon = document.getElementsByClassName('showGeoData');
+
+        lat_lon[0].innerHTML = position.coords.latitude +  " , " +  position.coords.longitude
+
+     };
+
+     navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
  
+    
       if (isAndroid) {
          link_sms = "sms:1922?body=";  //Android裝置帶到簡訊前面的字串
         } else {
@@ -112,9 +170,10 @@
 
 <div style="width:360px; margin:0 auto;">
 <table >
+<tr><td colspan="3" class="showGeoData" style="font-size:18px; font-family: Microsoft JhengHei; color: #4F4F4F;"></td></tr>
 <tr><td td colspan="3"><img src="../images/1922KMU_top_330x99.png"></td></tr>
 <tr><td class="td_icon"><img src="../images/KMU_80x80.png" class="img_icon"></td><td class="name-style"><b>高雄醫學大學</b></td>
-<td  class=btn><button type="submit" class="btn-primary" onclick="window.location.href = link_sms + link_01">1922 發簡訊</button></td></tr>
+<td  class=btn><button type="submit" class="btn-primary" onclick="window.location.href = link_sms + link_01 + KMU_pos">1922 發簡訊</button></td></tr>
 <tr><td class="td_icon"><img src="../images/FAMI_80x80.png" class="img_icon"></td><td class="name-style-2"><b>國研B1全家</b></td>
 <td class=btn><button  type="submit" class="btn-primary-2" onclick="window.location.href = link_sms + link_02">1922 發簡訊</button></td></tr>
 <tr><td class="td_icon"><img src="../images/LOUISA_80x80.png" class="img_icon"></td><td class="name-style"><b>路易莎咖啡</b></td>
@@ -161,6 +220,8 @@
         liwen.style['font-weight'] = 'bold';
 
     }
+
+   
     
 
 </script>
