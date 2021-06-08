@@ -148,13 +148,13 @@
 
         //alert(KMU_pos)
 
-        var lat_lon = document.getElementsByClassName('showGeoData');
+        //var lat_lon = document.getElementsByClassName('showGeoData');
 
-        lat_lon[0].innerHTML = position.coords.latitude +  " , " +  position.coords.longitude
+        //lat_lon[0].innerHTML = position.coords.latitude +  " , " +  position.coords.longitude
 
      };
 
-     navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
+     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
  
     
       if (isAndroid) {
@@ -170,7 +170,7 @@
 
 <div style="width:360px; margin:0 auto;">
 <table >
-<tr><td colspan="3" class="showGeoData" style="font-size:18px; font-family: Microsoft JhengHei; color: #4F4F4F;"></td></tr>
+<!--<tr><td colspan="3" class="showGeoData" style="font-size:18px; font-family: Microsoft JhengHei; color: #4F4F4F;"></td></tr> -->
 <tr><td td colspan="3"><img src="../images/1922KMU_top_330x99.png"></td></tr>
 <tr><td class="td_icon"><img src="../images/KMU_80x80.png" class="img_icon"></td><td class="name-style"><b>高雄醫學大學</b></td>
 <td  class=btn><button type="submit" class="btn-primary" onclick="window.location.href = link_sms + link_01 + KMU_pos">1922 發簡訊</button></td></tr>
