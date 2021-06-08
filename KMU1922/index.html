@@ -144,19 +144,18 @@
 
         else { KMU_pos = ''};  
 
-        //alert(position.coords.latitude)
+        //alert(String(position.coords.latitude).substr(0, 8) +  " , " +  String(position.coords.longitude).substr(0, 9))
 
         //alert(KMU_pos)
 
-        //var lat_lon = document.getElementsByClassName('showGeoData');
+        var lat_lon = document.getElementsByClassName('showGeoData');
 
-        //lat_lon[0].innerHTML = position.coords.latitude +  " , " +  position.coords.longitude
+        lat_lon[0].innerHTML = String(position.coords.latitude).substr(0, 8) +  " , " +  String(position.coords.longitude).substr(0, 9)
 
      };
 
-     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
- 
-    
+        navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
+     
       if (isAndroid) {
          link_sms = "sms:1922?body=";  //Android裝置帶到簡訊前面的字串
         } else {
@@ -170,7 +169,7 @@
 
 <div style="width:360px; margin:0 auto;">
 <table >
-<!--<tr><td colspan="3" class="showGeoData" style="font-size:18px; font-family: Microsoft JhengHei; color: #4F4F4F;"></td></tr> -->
+<tr><td colspan="3" class="showGeoData" style="font-size:18px; font-family: Microsoft JhengHei; color: #4F4F4F;"></td></tr>
 <tr><td td colspan="3"><img src="../images/1922KMU_top_330x99.png"></td></tr>
 <tr><td class="td_icon"><img src="../images/KMU_80x80.png" class="img_icon"></td><td class="name-style"><b>高雄醫學大學</b></td>
 <td  class=btn><button type="submit" class="btn-primary" onclick="window.location.href = link_sms + link_01 + KMU_pos">1922 發簡訊</button></td></tr>
