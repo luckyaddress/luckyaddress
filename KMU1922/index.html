@@ -72,43 +72,6 @@
 </script>
 <script type="text/javascript">
 
-    var KMU_pos ='';
-
-    navigator.geolocation.getCurrentPosition(function (position) {
-
-        
-        if (22.64602662064787 << parseFloat(position.coords.latitude) << 22.647141580084103 && 120.31128450245942 << parseFloat(position.coords.longitude) << 120.31180438485298) 
-            
-            { KMU_pos ='東側門'}
-    
-        else if (22.646520128402845 << parseFloat(position.coords.latitude) << 22.647255817232267
-      
-             && 120.30852169894243 << parseFloat(position.coords.longitude) << 120.30925448555429) 
-    
-            { KMU_pos = '自由路大門'}
-
-        else if (22.64739747115581 << parseFloat(position.coords.latitude) << 22.649225250533775  
-
-             && 120.30983873431035 << parseFloat(position.coords.longitude) << 120.31087849910708)  
-    
-            { KMU_pos = '第一教學大樓'}
-    
-        else if (22.64656324104321 << parseFloat(position.coords.latitude) << 22.64671176521614
-      
-             && 120.31032485043504 << parseFloat(position.coords.longitude) << 120.31117242850904)  
-    
-            { KMU_pos = '國際學術研究大樓'}
-
-        else { KMU_pos = ''};  
-        
-        alert(position.coords.latitude + ", " + position.coords.longitude)
-
-       
-    });
-
-
-  
-
     var position_code = ['2777 1949 6046 328', '2258 3936 3604 512', '2209 8836 9748 475',
                           '2433 1371 3020 000', '2764 0361 3574 510']; 
     var content_mid = '%0a本次簡訊實聯限防疫目的使用。%0a';  //SMS簡訊斷行，使用%0a
@@ -117,9 +80,6 @@
                          '路易莎咖啡-高醫門市','高雄醫學大學郵局','麗文書坊-高醫店'];
 
     var content = []; //儲存組合後的5組簡訊的陣列
-
-  
-
 
     for (var i = 0; i < 5; i++) {
 
@@ -154,7 +114,7 @@
 <table >
 <tr><td td colspan="3"><img src="../images/1922KMU_top_330x99.png"></td></tr>
 <tr><td class="td_icon"><img src="../images/KMU_80x80.png" class="img_icon"></td><td class="name-style"><b>高雄醫學大學</b></td>
-<td  class=btn><button type="submit" class="btn-primary" onclick="alert(position.coords.latitude + ", " + position.coords.longitude)">1922 發簡訊</button></td></tr>
+<td  class=btn><button type="submit" class="btn-primary" onclick="window.location.href = link_sms + link_01">1922 發簡訊</button></td></tr>
 <tr><td class="td_icon"><img src="../images/FAMI_80x80.png" class="img_icon"></td><td class="name-style-2"><b>國研B1全家</b></td>
 <td class=btn><button  type="submit" class="btn-primary-2" onclick="window.location.href = link_sms + link_02">1922 發簡訊</button></td></tr>
 <tr><td class="td_icon"><img src="../images/LOUISA_80x80.png" class="img_icon"></td><td class="name-style"><b>路易莎咖啡</b></td>
